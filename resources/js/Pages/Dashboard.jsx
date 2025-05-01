@@ -3,19 +3,10 @@ import { Head } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import RegisterHotel from './form/RegisterHotel';
 import CardHotel from '@/Components/CardHotel';
+import HotelList from '@/Layouts/HotelList';
 
 export default function Dashboard({auth}) {
     const [section, setSection] = useState("home")
-    const [hotel, setHotel] = useState([])
-    useEffect(() => {
-        fetch('user/hotel/list') 
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.data);
-                setHotel(data); 
-            })
-            .catch(error => console.error('Erro ao buscar os hotéis:', error));
-    }, []);
     return (
         <div>
             {/* 🔹 Sidebar fixa */}
@@ -39,25 +30,7 @@ export default function Dashboard({auth}) {
                             {/* 🔹 Renderiza o conteúdo baseado na seção ativa */}
                             {section === "home" && <h2 className="text-gray-900 text-lg font-bold">Boas Vindas!</h2>}
                             {section === "hotel" && <h2 className="text-gray-900 text-lg font-bold"><RegisterHotel userid={auth.user.id}/></h2>}
-                            {section === "hotelList" && 
-                             <div className="App">
-                                {hotel && Array.isArray(hotel) && hotel.length > 0 ? ( 
-                                    hotel.map((hotelItem, index) => (
-                                        <CardHotel
-                                            key={index}
-                                            nome={hotelItem.nome}
-                                            descricao={hotelItem.descricao}
-                                            cnpj={hotelItem.cnpj}
-                                            telefone={hotelItem.telefone}
-                                            email={hotelItem.email}
-                                            imagem={hotelItem.imagem}
-                                        />
-                                    ))
-                                ) : (
-                                <p>Carregando hotéis...</p> // Mensagem de carregamento ou erro
-                             )}
-                            </div>
-                            }
+                            {section === "hotelList" && <CardHotel/>}
                             {section === "estabelecimentos" && (
                                 <>
                                     <h2 className="text-gray-900 text-lg font-bold">Meus Estabelecimentos</h2>

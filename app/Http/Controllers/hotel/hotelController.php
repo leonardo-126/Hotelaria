@@ -4,6 +4,7 @@ namespace App\Http\Controllers\hotel;
 
 use App\Http\Controllers\Controller;
 use App\Models\hotel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -29,7 +30,7 @@ class hotelController extends Controller
 
     public function index(){
         // Recupera todos os hotéis do usuário autenticado
-        $hotels = Hotel::all();
+        $hotels = Auth::user()->hotels;
 
         return response()->json([
             'success' => true,
