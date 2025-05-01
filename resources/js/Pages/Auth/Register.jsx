@@ -11,11 +11,13 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        cpf: '',
+        telefone: ''
     });
 
     const submit = (e) => {
         e.preventDefault();
-
+        console.log(data)
         post(route('register'), {
             onFinish: () => reset('password', 'password_confirmation'),
         });
@@ -58,6 +60,39 @@ export default function Register() {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="cpf" value="CPF" />
+
+                    <TextInput
+                        id="cpf"
+                        name="cpf"
+                        value={data.cpf}
+                        className="mt-1 block w-full"
+                        autoComplete="cpf"
+                        onChange={(e) => setData('cpf', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div className='mt-4'>
+                    <InputLabel htmlFor="telefone" value="Telefone" />
+
+                    <TextInput
+                        id="telefone"
+                        name="telefone"
+                        value={data.telefone}
+                        className="mt-1 block w-full"
+                        autoComplete="telefone"
+                        isFocused={true}
+                        onChange={(e) => setData('telefone', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.telefone} className="mt-2" />
                 </div>
 
                 <div className="mt-4">

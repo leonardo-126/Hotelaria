@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Controllers\hotel;
+
+use App\Http\Controllers\Controller;
+use App\Models\hotel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+
+class hotelController extends Controller
+{
+    use HasFactory, Notifiable;
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'nome' => 'required|string|max:255',
+            'descricao' => 'required|string',
+            'cnpj' => 'required|unique:hotels,cnpj',
+            'telefone' => 'required|string|max:15',
+            'email' => 'required|email|unique:hotels,email',
+            'user_id' => 'required|exists:users,id'
+        ]);
+        hotel::create($validated);
+
+        //retorna resposta inertia com sucesso 
+        return redirect()->route('dashboard')->with('success', 'Estabelecimento criado com sucesso!');
+    }
+
+    public function index(){
+        // Recupera todos os hotéis do usuário autenticado
+        $hotels = Hotel::all();
+
+        return response()->json([
+            'success' => true,
+            'data' => $hotels
+        ]);
+    }
+}
