@@ -18,7 +18,7 @@ export default function RegisterHotel({userid}){
         const submit = (e) => {
             e.preventDefault();
     
-            post(route('user/hotel/store'));
+            post(route('user.hotel.store'));
         };
     return (
         <GuestLayout>

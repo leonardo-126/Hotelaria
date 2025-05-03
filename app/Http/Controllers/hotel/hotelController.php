@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Inertia\Inertia;
 
 class hotelController extends Controller
 {
@@ -35,6 +36,21 @@ class hotelController extends Controller
         return response()->json([
             'success' => true,
             'data' => $hotels
+        ]);
+    }
+    public function details($id) {
+        $hotel = hotel::findOrFail($id);
+
+        return response()->json([
+            'success' => true,
+            'data' => $hotel
+        ]);
+    }
+    public function show($id)
+    {
+        $hotel = Hotel::findOrFail($id);
+        return Inertia::render('hotel/HotelDetails', [
+            'hotel' => $hotel
         ]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\hotel\hotelController;
+use App\Http\Controllers\hotel\QuartoHotelController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::post('/user/hotel/store', [hotelController::class, 'store'])->name('user/hotel/store');
+    Route::post('/user/hotel/store', [hotelController::class, 'store'])->name('user.hotel.store');
     Route::get('/user/hotel/list', [HotelController::class, 'index']);
+    Route::get('/user/hotel/{id}', [hotelController::class, 'show'])->name('user.hotel.hotel');
+    Route::get('/user/hotel/{id/create}', [QuartoHotelController::class, 'store'])->name('user.hotel.hotel');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('quarto_hotels', function (Blueprint $table) {
             $table->id();
             $table->foreignId('hotels_id')->constrained()->onDelete('cascade');
-            $table->string('numero_quarto');
             $table->string('tipo');
-            $table->enum('status', ['livre', 'ocupado']);
             $table->decimal('valor', 8, 2);
+            $table->integer('quantidade');
             $table->timestamps();
         });
     }

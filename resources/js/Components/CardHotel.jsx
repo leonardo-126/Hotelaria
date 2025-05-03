@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import img from "../../../public/assets/hotel.png"
+import { Link } from "@inertiajs/react";
 
 export default function CardHotel() {
     const [hotel, setHotel] = useState([])
@@ -40,6 +41,9 @@ export default function CardHotel() {
                                         <p className="card-text">
                                             <strong>Email:</strong> {Item.email}
                                         </p>
+                                        <Link href={`user/hotel/${Item.id}`} className="btn btn-primary mt-3">
+                                            Ver Detalhes
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
