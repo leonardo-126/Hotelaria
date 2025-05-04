@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\hotel;
 
 use App\Http\Controllers\Controller;
+use App\Models\QuartoHotel;
 use App\Models\reservas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,8 @@ class ReservaController extends Controller
             'data_check_in'=> $request->data_check_in,
             'data_check_out'=> $request->data_check_out,
         ]);
+
+        QuartoHotel::where('id', $request->quarto_id) ->update(['status' => 'ocupado']);
         return redirect()->back()->with('success', 'Item cadastrado com sucesso!');
     }
 }

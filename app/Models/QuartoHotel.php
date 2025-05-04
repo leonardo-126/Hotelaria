@@ -17,6 +17,6 @@ class QuartoHotel extends Model
 
     public function reservas()
     {
-        return $this->hasMany(Reserva::class);
+        return $this->hasMany(reservas::class);
     }
 }
