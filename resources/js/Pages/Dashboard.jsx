@@ -5,6 +5,7 @@ import RegisterHotel from './form/RegisterHotel';
 import CardHotel from '@/Components/CardHotel';
 import HotelList from '@/Layouts/HotelList';
 import CardHotelPublic from '@/Components/CardHotelPublic';
+import CardReserva from '@/Components/CardReserva';
 
 export default function Dashboard({auth}) {
     const [section, setSection] = useState("home")
@@ -17,7 +18,7 @@ export default function Dashboard({auth}) {
                     <button onClick={() => setSection("home")} className="p-2 hover:bg-gray-700 rounded text-left w-full">🏠 Início</button>
                     <button onClick={() => setSection("hotel")} className="p-2 hover:bg-gray-700 rounded text-left w-full">🏢 hotel</button>
                     <button onClick={() => setSection("hotelList")} className="p-2 hover:bg-gray-700 rounded text-left w-full">🏢 Meus Hoteis</button>
-                    <button onClick={() => setSection("estabelecimentos")} className="p-2 hover:bg-gray-700 rounded text-left w-full">📜 Meus Estabelecimentos</button>
+                    <button onClick={() => setSection("reservas")} className="p-2 hover:bg-gray-700 rounded text-left w-full">📜 Minhas Reservas</button>
                 </nav>
             </div>
             {/* 🔹 Conteúdo principal (deslocado para a direita) */}
@@ -32,10 +33,10 @@ export default function Dashboard({auth}) {
                             {section === "home" && <h2 className="text-gray-900 text-lg font-bold"><CardHotelPublic/></h2>}
                             {section === "hotel" && <h2 className="text-gray-900 text-lg font-bold"><RegisterHotel userid={auth.user.id}/></h2>}
                             {section === "hotelList" && <CardHotel/>}
-                            {section === "estabelecimentos" && (
+                            {section === "reservas" && (
                                 <>
-                                    <h2 className="text-gray-900 text-lg font-bold">Meus Estabelecimentos</h2>
-                                    
+                                    <h2 className="text-gray-900 text-lg font-bold">Minhas Reservas</h2>
+                                    <CardReserva/>
                                 </>
                             )}
                         </div>

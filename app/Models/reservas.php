@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class reservas extends Model
+class Reservas extends Model
 {
     protected $fillable = [
         'hotels_id', 'quarto_id', 'user_id', 'status','data_check_in', 'data_check_out'
@@ -12,16 +12,16 @@ class reservas extends Model
 
     public function hotel()
     {
-        return $this->belongsTo(Hotel::class);
+        return $this->belongsTo(Hotel::class, 'hotels_id');
     }
 
     public function quarto()
     {
-        return $this->belongsTo(QuartoHotel::class);
+        return $this->belongsTo(QuartoHotel::class, 'quarto_id');
     }
 
     public function usuario()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Reservas::class, 'user_id');
     }
 }

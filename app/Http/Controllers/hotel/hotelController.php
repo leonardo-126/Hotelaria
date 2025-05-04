@@ -30,7 +30,6 @@ class hotelController extends Controller
     }
 
     public function index(){
-        // Recupera todos os hotéis do usuário autenticado
         $hotels = Auth::user()->hotels;
 
         return response()->json([

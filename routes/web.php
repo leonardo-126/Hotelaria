@@ -31,8 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/hotel/quartos/store', [QuartoHotelController::class, 'store'])->name('user.hotel.hotel.store');
     
     Route::get('/user/hotel/{id}/quartos/list', [QuartoHotelController::class, 'index']);
-    Route::post('/user/hotel/reserva/store', [ReservaController::class, 'store'])->name('user.hotel.reserva.store');
 
+    Route::post('/user/hotel/reserva/store', [ReservaController::class, 'store'])->name('user.hotel.reserva.store');
+    Route::get('/user/reserva/list', [ReservaController::class, 'index'])->name('user.reserva.list');
+    Route::get('/user/reserva/details/{id}', [ReservaController::class, 'show'])->name('user.reserva.show');
+    Route::post('/user/reserva/{id}/cancelar', [ReservaController::class, 'cancelar'])->name('user.reserva.cancelar');
+    Route::post('/user/reserva/{id}/checkin', [ReservaController::class, 'checkin'])->name('user.reserva.checkin');
+    Route::post('/user/reserva/{id}/checkout', [ReservaController::class, 'checkout'])->name('user.reserva.checkout');
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
