@@ -11,7 +11,6 @@ export default function Dashboard({auth}) {
     const [section, setSection] = useState("home")
     return (
         <div>
-            {/* 🔹 Sidebar fixa */}
             <div className="w-64 h-screen bg-gray-800 text-white fixed top-0 left-0 flex flex-col">
                 <div className="p-4 text-xl font-bold">Dashboard</div>
                 <nav className="flex flex-col space-y-2 p-4 items-start">

@@ -39,9 +39,10 @@ export default function CardHotelPublic(){
                                         <p className="card-text">
                                             <strong>Email:</strong> {Item.email}
                                         </p>
-                                        <Link href={`user/hotel/reserva/${Item.id}`} className="btn btn-primary mt-3">
+                                        <Link href={`user/hotel/reserva/${Item.id}`} className="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150 mb-4">
                                             Fazer Reserva
                                         </Link>
+                                        
                                     </div>
                                 </div>
                             </div>

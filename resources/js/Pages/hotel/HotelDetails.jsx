@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
 import img from '../../../../public/assets/hotel.png'
 import RegisterHotel from "../form/RegisterHotel";
@@ -34,6 +34,12 @@ export default function HotelDetails(){
                     <div className="text-center">
                         <RegisterQuarto hotels_id={hotel.id} />
                     </div>
+                    <Link
+                    href={route('dashboard')}
+                    className="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150 mb-4"
+                    >
+                        ← Voltar para Dashboard
+                    </Link>
                 </div>
             </div>
         </div>
