@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\hotel\hotelController;
 use App\Http\Controllers\hotel\QuartoHotelController;
+use App\Http\Controllers\hotel\ReservaController;
 use App\Http\Controllers\ProfileController;
+use App\Models\QuartoHotel;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,8 +25,14 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::post('/user/hotel/store', [hotelController::class, 'store'])->name('user.hotel.store');
     Route::get('/user/hotel/list', [HotelController::class, 'index']);
+    Route::get('/user/hotel/list/public', [HotelController::class, 'indexPublic']);
     Route::get('/user/hotel/{id}', [hotelController::class, 'show'])->name('user.hotel.hotel');
-    Route::get('/user/hotel/{id/create}', [QuartoHotelController::class, 'store'])->name('user.hotel.hotel');
+    Route::get('/user/hotel/reserva/{id}', [hotelController::class, 'showPublic'])->name('user.hotel.reserva');
+    Route::post('/user/hotel/quartos/store', [QuartoHotelController::class, 'store'])->name('user.hotel.hotel.store');
+    
+    Route::get('/user/hotel/{id}/quartos/list', [QuartoHotelController::class, 'index']);
+    Route::post('/user/hotel/reserva/store', [ReservaController::class, 'store'])->name('user.hotel.reserva.store');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

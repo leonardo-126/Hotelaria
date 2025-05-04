@@ -38,6 +38,14 @@ class hotelController extends Controller
             'data' => $hotels
         ]);
     }
+    public function indexPublic(){
+        $hotels = hotel::all();
+
+        return response()->json([
+            'success' => true,
+            'data' => $hotels
+        ]);
+    }
     public function details($id) {
         $hotel = hotel::findOrFail($id);
 
@@ -50,6 +58,13 @@ class hotelController extends Controller
     {
         $hotel = Hotel::findOrFail($id);
         return Inertia::render('hotel/HotelDetails', [
+            'hotel' => $hotel
+        ]);
+    }
+    public function showPublic($id)
+    {
+        $hotel = Hotel::findOrFail($id);
+        return Inertia::render('hotel/HotelReservaDetails', [
             'hotel' => $hotel
         ]);
     }

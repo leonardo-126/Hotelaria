@@ -1,15 +1,11 @@
 import { usePage } from "@inertiajs/react";
 import { useState } from "react";
+import ReservaHotel from "../form/ReservaHotel";
 import img from '../../../../public/assets/hotel.png'
-import RegisterHotel from "../form/RegisterHotel";
-import RegisterQuarto from "../form/RegisterQuarto";
 
-export default function HotelDetails(){
+export default function HotelReservaDetails() {
     const [loading, setLoading] = useState(true);
     const { hotel } = usePage().props;
-
-    console.log(hotel)
-
     return (
         <div className="w-100 min-vh-100 bg-light d-flex align-items-center justify-content-center p-4">
             <div className="w-100 bg-white shadow rounded-4 overflow-hidden" style={{ maxWidth: '1000px' }}>
@@ -32,10 +28,10 @@ export default function HotelDetails(){
                     <div className="mb-4"><strong>Registrado em:</strong> {new Date(hotel.created_at).toLocaleString()}</div>
 
                     <div className="text-center">
-                        <RegisterQuarto hotels_id={hotel.id} />
+                        <ReservaHotel hotel_id={hotel.id}/>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    )
 }

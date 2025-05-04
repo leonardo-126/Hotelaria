@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import img from "../../../public/assets/hotel.png"
 import { Link } from "@inertiajs/react";
 
-export default function CardHotel() {
+export default function CardHotelPublic(){
     const [hotel, setHotel] = useState([])
-        useEffect(() => {
-            fetch('user/hotel/list') 
-                .then(response => response.json())
-                .then(data => {
-                    setHotel(data.data); 
-                })
-                .catch(error => console.error('Erro ao buscar os hotéis:', error));
-        }, []);
+            useEffect(() => {
+                fetch('user/hotel/list/public') 
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.data)
+                        setHotel(data.data); 
+                    })
+                    .catch(error => console.error('Erro ao buscar os hotéis:', error));
+            }, []);
     return (
         <section>
             {hotel && hotel.length > 0 ? (
@@ -33,16 +34,13 @@ export default function CardHotel() {
                                         <h5 className="card-title text-primary"><strong>{Item.nome}</strong></h5>
                                         <p className="card-text text-muted"><strong>{Item.descricao}</strong></p>
                                         <p className="card-text">
-                                            <strong>CNPJ:</strong> {Item.cnpj}
-                                        </p>
-                                        <p className="card-text">
                                             <strong>Telefone:</strong> {Item.telefone}
                                         </p>
                                         <p className="card-text">
                                             <strong>Email:</strong> {Item.email}
                                         </p>
-                                        <Link href={`user/hotel/${Item.id}`} className="btn btn-primary mt-3">
-                                            Ver Detalhes
+                                        <Link href={`user/hotel/reserva/${Item.id}`} className="btn btn-primary mt-3">
+                                            Fazer Reserva
                                         </Link>
                                     </div>
                                 </div>

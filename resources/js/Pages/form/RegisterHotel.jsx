@@ -12,7 +12,8 @@ export default function RegisterHotel({userid}){
             cnpj: '',
             telefone: '',
             descricao: '',
-            user_id: userid
+            user_id: userid //poderia ter feito direto no controller
+            //verifique
         });
     
         const submit = (e) => {

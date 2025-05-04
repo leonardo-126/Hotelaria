@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hotel_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('hotels_id')->constrained()->onDelete('cascade'); 
             $table->foreignId('quarto_id')->constrained('quarto_hotels')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
             $table->enum('status', ['checkin','checkout', 'confirmada', 'cancelada']);

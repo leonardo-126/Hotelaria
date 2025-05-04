@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('hotels_id')->constrained()->onDelete('cascade');
             $table->string('tipo');
             $table->decimal('valor', 8, 2);
-            $table->integer('quantidade');
+            $table->enum('status', ['livre', 'ocupado'])->default('livre');
             $table->timestamps();
         });
     }

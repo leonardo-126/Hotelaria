@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import RegisterHotel from './form/RegisterHotel';
 import CardHotel from '@/Components/CardHotel';
 import HotelList from '@/Layouts/HotelList';
+import CardHotelPublic from '@/Components/CardHotelPublic';
 
 export default function Dashboard({auth}) {
     const [section, setSection] = useState("home")
@@ -28,7 +29,7 @@ export default function Dashboard({auth}) {
                     <div className="sm:px-6 lg:px-8">
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-left mt-3">
                             {/* 🔹 Renderiza o conteúdo baseado na seção ativa */}
-                            {section === "home" && <h2 className="text-gray-900 text-lg font-bold">Boas Vindas!</h2>}
+                            {section === "home" && <h2 className="text-gray-900 text-lg font-bold"><CardHotelPublic/></h2>}
                             {section === "hotel" && <h2 className="text-gray-900 text-lg font-bold"><RegisterHotel userid={auth.user.id}/></h2>}
                             {section === "hotelList" && <CardHotel/>}
                             {section === "estabelecimentos" && (
