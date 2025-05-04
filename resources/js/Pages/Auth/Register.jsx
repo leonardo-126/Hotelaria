@@ -63,7 +63,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="cpf" value="CPF" />
+                    <InputLabel htmlFor="cpf" value="CPF: Ex:(xxx.xxx.xxx-xx)" />
 
                     <TextInput
                         id="cpf"

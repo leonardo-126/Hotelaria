@@ -106,6 +106,9 @@ export default function ReservaDetails(){
                         <span className="font-semibold">Valor por diária:</span> R$ {parseFloat(quarto?.valor || 0).toFixed(2)}
                     </p>
                     <p className="text-gray-700">
+                        <span className="font-semibold">Valor total:</span> R$ {parseFloat(reserva?.valor_total || 0).toFixed(2)}
+                    </p>
+                    <p className="text-gray-700">
                         <span className="font-semibold">Status:</span> {reserva.status}
                     </p>
                     <p className="text-gray-700">

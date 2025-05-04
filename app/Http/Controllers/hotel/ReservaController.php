@@ -16,14 +16,15 @@ class ReservaController extends Controller
         $request->validate([
             'hotels_id' => 'required|integer|exists:hotels,id',
             'quarto_id' => 'required|integer|exists:quarto_hotels,id',
+            'valor_total' => 'required|numeric|min:0',
             'data_check_in' => 'required|date|after_or_equal:today',
             'data_check_out' => 'required|date|after:data_check_in',
         ]);
-
         reservas::create([
             'user_id' => $user,
             'hotels_id'=> $request->hotels_id,
             'quarto_id'=> $request->quarto_id,
+            'valor_total' => $request->valor_total,
             'status'=> 'confirmada',
             'data_check_in'=> $request->data_check_in,
             'data_check_out'=> $request->data_check_out,

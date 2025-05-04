@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 
 export default function ReservaHotel({hotel_id}){
     const [quartos, setQuartos] = useState([]);
-    const [valorTotal, setValorTotal] = useState(0);
     const [refresh, setRefresh] = useState(false);
 
     const { data, setData, post, processing, errors, reset } = useForm({
         hotels_id: hotel_id,
+        valor_total: '',
         quarto_id: '',
         data_check_in: '',
         data_check_out: ''
@@ -19,12 +19,9 @@ export default function ReservaHotel({hotel_id}){
         
     const submit = (e) => {
         e.preventDefault();
-        post(route('user.hotel.reserva.store'), {
-            onSuccess: () => {
-                setRefresh(prev => !prev)
-            }
-        });
+        post(route('user.hotel.reserva.store'))
     };
+    
 
     useEffect(() => {
         fetch(`/user/hotel/${hotel_id}/quartos/list`) 
@@ -39,20 +36,19 @@ export default function ReservaHotel({hotel_id}){
 
     useEffect(() => {
         const quartoSelecionado = quartosDisponiveis.find(q => q.id == data.quarto_id);
-    
+        
         if (data.data_check_in && data.data_check_out && quartoSelecionado) {
             const checkIn = new Date(data.data_check_in);
             const checkOut = new Date(data.data_check_out);
-            const dias = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24)); //retorna duas datas em milesegundos e converte
+            const dias = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
     
             if (dias > 0) {
-                setValorTotal(dias * parseFloat(quartoSelecionado.valor));
-            } else {
-                setValorTotal(0);
+                setData('valor_total', dias * parseFloat(quartoSelecionado.valor));
+                return;
             }
-        } else {
-            setValorTotal(0);
         }
+    
+        setData('valor_total', 0);
     }, [data.data_check_in, data.data_check_out, data.quarto_id]);
 
     return (
@@ -113,11 +109,12 @@ export default function ReservaHotel({hotel_id}){
                 
                     <InputError message={errors.data_check_out} className="mt-2" />
                 </div>
-                {valorTotal > 0 && (
+                {Number(data.valor_total) > 0 && (
                     <div className="text-lg font-semibold text-green-600">
-                        Total da reserva: R$ {valorTotal.toFixed(2)}
+                        Total da reserva: R$ {Number(data.valor_total).toFixed(2)}
                     </div>
                 )}
+
                 <Link
                     href={route('dashboard')}
                     className="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150 mb-4"

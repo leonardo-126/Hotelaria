@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('quarto_id')->constrained('quarto_hotels')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
             $table->enum('status', ['checkin','checkout', 'confirmada', 'cancelada']);
+            $table->decimal('valor_total', 8, 2);
             $table->date('data_check_in');  // Data de check-in
             $table->date('data_check_out'); // Data de check-out
             $table->timestamps();
