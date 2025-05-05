@@ -1,67 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Reserva de Hotéis 🏨
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um sistema de reservas desenvolvido com **Laravel + Inertia.js + React**, permitindo que usuários possam se registrar e reservar quartos em hotéis cadastrados.
 
-## About Laravel
+## ✅ Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🔹 Registro e Autenticação
+- Registrar novo usuário
+- Login e logout com sessão segura
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔹 Hotéis
+- Criar/cadastrar hotéis (após login)
+- Listar hotéis disponíveis
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🔹 Quartos
+- Registrar quartos associados a um hotel
+- Definir tipo, valor e status do quarto
 
-## Learning Laravel
+### 🔹 Reservas
+- Realizar reservas escolhendo o hotel, quarto e período (check-in e check-out)
+- Calcular automaticamente o valor total da estadia
+- Gerenciar reservas (visualizar, atualizar status etc.)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🔁 Fluxo de Uso
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Registrar Usuário**
+   - A criação de uma conta automaticamente faz login no sistema.
 
-## Laravel Sponsors
+2. **Cadastro de Hotel**
+   - Após o registro, o usuário pode cadastrar hotéis pelo painel.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Cadastro de Quartos**
+   - Cada hotel pode ter vários quartos registrados com tipo e valor.
 
-### Premium Partners
+4. **Login e Acesso à Dashboard**
+   - O usuário logado acessa a dashboard, onde:
+     - Visualiza a lista de hotéis disponíveis
+     - Escolhe um hotel para realizar uma reserva
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. **Realizar Reserva**
+   - Seleciona um quarto disponível e define as datas
+   - O sistema calcula o valor da reserva com base nos dias e valor do quarto
+   - Reserva é enviada e pode ser gerenciada posteriormente
 
-## Contributing
+## 🚧 Requisitos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# Hotelaria" 
+- PHP 8.2+
+- Node.js 18+
+- Composer
+- MySQL
